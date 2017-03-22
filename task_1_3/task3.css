@@ -1,0 +1,66 @@
+* {
+  padding: 0px;
+  margin: 0; }
+
+body {
+  padding: 20px;
+  min-width: 420px; }
+
+.content {
+  border: 1px solid gray;
+  padding: 20px; }
+
+.content:after {
+  content: ".";
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+  overflow: hidden; }
+
+.content__middle {
+  float: left;
+  width: 100%; }
+
+.content__middle__info {
+  margin: 0 140px 0 220px;
+  background-color: white;
+  height: 100%; }
+  .content__middle__info div {
+    padding: 20px;
+    border: 1px solid gray; }
+    .content__middle__info div p {
+      word-break: break-all; }
+
+.content__left {
+  float: left;
+  width: 220px;
+  margin-left: -100%; }
+  .content__left__info {
+    width: 198px;
+    border: 1px solid gray;
+    height: 122px; }
+    .content__left__info img {
+      float: left;
+      margin: 20px;
+      border: 1px solid gray; }
+    .content__left__info p {
+      float: left;
+      padding-top: 20px; }
+
+.content__right {
+  float: left;
+  width: 140px;
+  margin-left: -140px; }
+  .content__right__info {
+    width: 118px;
+    border: 1px solid gray;
+    margin-left: 20px; }
+    .content__right__info img {
+      margin: 0 19px 19px 19px;
+      border: 1px solid gray; }
+    .content__right__info img:first-child {
+      margin: 19px;
+      border: 1px solid gray; }
+
+/*# sourceMappingURL=task3.css.map */
