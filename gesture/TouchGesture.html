@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>手势密码</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+    <div data-role="page">
+        <div data-role="header">
+            <h1>手势密码</h1>
+        </div>
+        <div data-role="content">
+            <div id="drawing"></div>
+            <p style="text-align: center;">请输入手势密码</p>
+            <label for="setting" >设置密码</label>
+            <input type="radio"  name="op" value="setting" checked="checked" id ="setting">
+            <label for="verify">验证密码</label>
+            <input type="radio"  name="op" value="verify" id="verify">
+        </div>
+    </div>
+    <script src="gesture.js"></script>
+</body>
+</html>
