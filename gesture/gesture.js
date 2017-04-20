@@ -6,6 +6,10 @@ $(document).ready(function(){
     var CanvasCircle = new mycanvas(30,30,29);
     CanvasCircle.init();
 });
+window.onresize = function(){
+    var CanvasCircle = new mycanvas(30,30,29);
+    CanvasCircle.init();
+};
 
 /*手势密码组件,参数分别代表X、Y方向上的间距，圆圈的半径*/
 function mycanvas(offsetX,offsetY,circleR){
