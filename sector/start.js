@@ -23,32 +23,40 @@
     }
 };
 
-function Scan(startRadius,endRadius,internalRadius){ //开始扫描角度，结束扫描角度，扫描速度
-    var radar_romate_flag = 1;
-    var timer_scan;
-    level = startRadius;
-    function regularUpdateRadar () {
-        if(radar_romate_flag){
-            if(level<endRadius) {
-                level = level +internalRadius;
-            } else {
-                radar_romate_flag = 0;
-            }
-        } else{
-            if(level>startRadius){
-                level = level -internalRadius;
-            }else {
-                radar_romate_flag = 1;
-            }
+(function() {
+  function Scan(startRadius, endRadius, internalRadius,intervalTime) { //开始扫描角度，结束扫描角度，扫描速度
+    var radar_romate_flag = 1,
+        level = startRadius,
+        starttime = new Date().getTime(),
+        count = 0;
+    function regularUpdateRadar() {
+      count++;
+      var offset = new Date().getTime() - (starttime + count * intervalTime);
+      var nexttime = intervalTime - offset;
+      if(nexttime<0) nexttime = 0;
+      if (radar_romate_flag) {
+        if (level < endRadius) {
+          level = level + internalRadius;
+        } else {
+          radar_romate_flag = 0;
         }
-        var a = new Sector('ppiCanvas');
-        a.draw();
+      } else {
+        if (level > startRadius) {
+          level = level - internalRadius;
+        } else {
+          radar_romate_flag = 1;
+        }
+      }
+      var a = new Sector('ppiCanvas', level);
+      a.draw();
+      setTimeout(regularUpdateRadar, nexttime)
     }
-    timer_scan = setInterval(regularUpdateRadar,100);
-    return timer_scan;
-}
+    setTimeout(regularUpdateRadar,intervalTime);
+  }
+  window.Scan = Scan;
+})();
 
 EventUtil.addHandler(document,"DOMContentLoaded",function(){
     drawArc();
-    var timer_scan = Scan(120,210,3);  //可通过通过清除计数器停止扫描
+    Scan(120,210,3,100);
 });
