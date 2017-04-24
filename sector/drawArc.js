@@ -8,7 +8,6 @@
     var radarR_in = arguments[0] || 30000;
     if (count != 0) {
       var canvasId = canvasId || 'arcCanvas';
-      console.log("canvasId", canvasId);
       var canvas = document.getElementById(canvasId);
       var canvasR = canvas.height;     //目前认为是正方形   只需要 R
       var ctx = canvas.getContext("2d");

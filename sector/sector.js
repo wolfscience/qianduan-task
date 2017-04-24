@@ -36,7 +36,7 @@
                 (Math.cos(angle) * innerRadius) + cx,
                 (Math.sin(angle) * innerRadius) + cy
             );
-            _.closePath();
+            //_.closePath();
             _.stroke();
         },
         path: [

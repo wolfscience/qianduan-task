@@ -32,8 +32,13 @@
     function regularUpdateRadar() {
       count++;
       var offset = new Date().getTime() - (starttime + count * intervalTime);
+      console.log(offset);
       var nexttime = intervalTime - offset;
-      if(nexttime<0) nexttime = 0;
+      if(nexttime<0) {
+        nexttime = 0;
+        starttime = new Date().getTime();
+        count = 0;
+      }
       if (radar_romate_flag) {
         if (level < endRadius) {
           level = level + internalRadius;
