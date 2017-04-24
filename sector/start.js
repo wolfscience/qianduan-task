@@ -24,7 +24,12 @@
 };
 
 (function() {
-  function Scan(startRadius, endRadius, internalRadius,intervalTime) { //开始扫描角度，结束扫描角度，扫描速度
+  function Scan(canvasid,startRadius, endRadius, internalRadius,intervalTime,cover) { //画布id，开始扫描角度，结束扫描角度，扫描速度,扫描间隔，扫描覆盖角度
+    var canvasid = canvasid || 'ppiCanvas',
+        startRadius = startRadius || 120,
+        endRadius = endRadius||240,
+        internalRadius = internalRadius||100,
+        cover = cover||30;
     var radar_romate_flag = 1,
         level = startRadius,
         starttime = new Date().getTime(),
@@ -32,7 +37,6 @@
     function regularUpdateRadar() {
       count++;
       var offset = new Date().getTime() - (starttime + count * intervalTime);
-      console.log(offset);
       var nexttime = intervalTime - offset;
       if(nexttime<0) {
         nexttime = 0;
@@ -40,7 +44,7 @@
         count = 0;
       }
       if (radar_romate_flag) {
-        if (level < endRadius) {
+        if (level  < endRadius-cover) {
           level = level + internalRadius;
         } else {
           radar_romate_flag = 0;
@@ -52,7 +56,7 @@
           radar_romate_flag = 1;
         }
       }
-      var a = new Sector('ppiCanvas', level);
+      var a = new Sector(canvasid, level,cover);
       a.draw();
       setTimeout(regularUpdateRadar, nexttime)
     }
@@ -63,5 +67,5 @@
 
 EventUtil.addHandler(document,"DOMContentLoaded",function(){
     drawArc();
-    Scan(120,210,3,100);
+    Scan('ppiCanvas',120,240,3,100,30);
 });

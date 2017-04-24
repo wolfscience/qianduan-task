@@ -16,8 +16,8 @@
   }
   var argIfRadius = [0, 0, 0, 1, 1, 0]; //参数是否是角度
 
-  function Sector(canvas,level) {
-    var cover = 30; // 扇形覆盖宽度 ，0-360
+  function Sector(canvas,level,cover) {
+    var cover = cover || 30; // 扇形覆盖宽度 ，0-360
     var canvasR = document.getElementById (canvas).height;
     var d = {
         width: canvasR,
@@ -45,7 +45,7 @@
     };
     this.id = canvas;
     this.data = d.path;
-    this.pointDistance = d.pointDistance || .05;
+    this.pointDistance = d.pointDistance;
     this.strokeColor = d.strokeColor || '#FFF';
     this.drawlineMethod = d.drawline;
     this.width = d.width;    //画布宽度

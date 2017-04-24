@@ -47,7 +47,7 @@
           ctx.stroke();
         }
       }
-      ctx.closePath();
+      //ctx.closePath();
     }
   }
   window.drawArc = drawArc;
