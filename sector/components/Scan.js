@@ -1,20 +1,17 @@
 /**
- * Created by fuwu2 on 2017/4/21.
- * */
-
-
-
-(function() {
-  function Scan(canvasid,startRadius, endRadius, internalRadius,intervalTime,cover) { //画布id，开始扫描角度，结束扫描角度，扫描速度,扫描间隔，扫描覆盖角度
+ * Created by zero on 2017/4/25.
+ */
+define(['Sector'],function(sector){
+  var Scan = function(canvasid,startRadius, endRadius, internalRadius,intervalTime,cover) { //画布id，开始扫描角度，结束扫描角度，扫描速度,扫描间隔，扫描覆盖角度
     var canvasid = canvasid || 'ppiCanvas',
-        startRadius = startRadius || 120,
-        endRadius = endRadius||240,
-        internalRadius = internalRadius||100,
-        cover = cover||30;
+      startRadius = startRadius || 120,
+      endRadius = endRadius||240,
+      internalRadius = internalRadius||100,
+      cover = cover||30;
     var radar_romate_flag = 1,
-        level = startRadius,
-        starttime = new Date().getTime(),
-        count = 0;
+      level = startRadius,
+      starttime = new Date().getTime(),
+      count = 0;
     function regularUpdateRadar() {
       count++;
       var offset = new Date().getTime() - (starttime + count * intervalTime);
@@ -37,16 +34,13 @@
           radar_romate_flag = 1;
         }
       }
-      var a = new Sector(canvasid, level,cover);
+      var a = new sector.Sector(canvasid, level,cover);
       a.draw();
       setTimeout(regularUpdateRadar, nexttime)
     }
     setTimeout(regularUpdateRadar,intervalTime);
+  };
+  return {
+    Scan:Scan
   }
-  window.Scan = Scan;
-})();
-
-EventUtil.addHandler(document,"DOMContentLoaded",function(){
-    drawArc();
-    Scan('ppiCanvas',120,240,3,100,30);
 });

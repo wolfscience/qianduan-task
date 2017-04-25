@@ -1,7 +1,7 @@
 /**
  * Created by fuwu2 on 2017/4/21.
  */
-(function() {
+define(function() {
   function drawArc(radarR_in,canvasId) {  //画圈
 
     var count = 6;
@@ -47,8 +47,9 @@
           ctx.stroke();
         }
       }
-      //ctx.closePath();
     }
   }
-  window.drawArc = drawArc;
-})();
+  return{
+     drawArc:drawArc
+  };
+});

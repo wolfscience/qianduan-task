@@ -1,8 +1,8 @@
 /**
  * Created by fuwu2 on 2017/4/20.
  */
-//传入图层名称
-(function(){
+
+define(function(){
   //计算外部点集
   function pathMethods(t, cx, cy, radius, start, end) {
     var point = (end - start) * t + start;
@@ -115,5 +115,8 @@
       hoc.prep();
     }
    }
-   window.Sector = Sector;
-})();
+  return {
+    Sector:Sector
+  }
+});
+

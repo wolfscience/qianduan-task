@@ -1,3 +1,4 @@
+初版：
 画布分两层，两层画布的位置、z-index需要自己写css设定，position均为absolute，位置重叠，一个上层、一个下层
 
 下层画布画同心圆，文件为drawArc.js，调用函数drawArc，参数为雷达探测范围、画布id
@@ -15,3 +16,17 @@ cover表示扇形覆盖角度
 （角度为以正北方向为0度角，顺时针角度）
 Scan函数中利用setTimeout调用regularUpdateRadar函数实现来回扫描效果，
 由于计时器实际使用过程中会出现偏差越来越大的情况，所以函数内部实现了粗略的校准功能
+
+模块化：
+引入require.js函数，实现AMD模块化，目录为
+sector
+  components
+    drawArc.js
+    Scan.js
+    sector.js
+  lib
+    require.js
+  pages
+    index.js
+  RadarScan.html
+index.js为入口文件，触发模块加载完成的回调函数
