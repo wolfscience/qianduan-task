@@ -1,4 +1,4 @@
-初版：
+﻿初版：
 画布分两层，两层画布的位置、z-index需要自己写css设定，position均为absolute，位置重叠，一个上层、一个下层
 
 下层画布画同心圆，文件为drawArc.js，调用函数drawArc，参数为雷达探测范围、画布id
@@ -30,3 +30,5 @@ sector
     index.js
   RadarScan.html
 index.js为入口文件，触发模块加载完成的回调函数
+
+localtest
