@@ -31,6 +31,5 @@ sector
   RadarScan.html
 index.js为入口文件，触发模块加载完成的回调函数
 
-localtest2
 
 
